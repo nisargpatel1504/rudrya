@@ -25,7 +25,7 @@ To use this library in your Go project, you can either import it from a remote r
 2. Import the library in your project:
 
     ```go
-    import "github.com/yourusername/messaging"
+    import "github.com/yourusername/rudrya"
     ```
 
 3. Run `go mod tidy` to install the library:
