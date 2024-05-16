@@ -47,11 +47,3 @@ func (b *Broker) SendMessage(topic, message string) {
 	}
 }
 
-// GetChannel returns the channel for a specific topic.
-// func (b *Broker) GetChannel(topic string) (chan string, bool) {
-// 	b.mu.RLock()
-// 	defer b.mu.RUnlock()
-
-// 	ch, exists := b.topics[topic]
-// 	return ch, exists
-// }
