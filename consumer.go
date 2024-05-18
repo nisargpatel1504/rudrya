@@ -3,21 +3,23 @@ package rudrya
 // Consumer is responsible for receiving messages from a broker.
 type Consumer struct {
     brokers []*Broker
-    topic  string
+    topic  []string
     ch     chan string
 }
 
 // NewConsumer initializes a new Consumer instance and registers it with the broker.
-func NewConsumer(brokers []*Broker, topic string, bufferSize int) *Consumer {
+func NewConsumer(brokers []*Broker, topics []string, bufferSize int) *Consumer {
 	ch := make(chan string, bufferSize)
     consumer := &Consumer{
 		brokers: brokers,
-		topic:   topic,
+		topic:   topics,
 		ch:      ch,
 	}
 
 	for _, broker := range brokers {
-		broker.RegisterConsumer(topic, ch)
+		for _, topic := range topics {
+			broker.RegisterConsumer(topic, ch)
+		}
 	}
 
 	return consumer
